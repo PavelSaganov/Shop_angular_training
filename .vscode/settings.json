@@ -1,0 +1,7 @@
+{
+    "explorer.compactFolders": false,
+    "outline.collapseItems": "alwaysCollapse",
+    "editor.formatOnPaste": true,
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorStyle": "line"
+}
