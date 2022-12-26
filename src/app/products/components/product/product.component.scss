@@ -1,6 +1,12 @@
+.product-card
+{
+    background: antiquewhite;
+    margin: 5px;
+    border: 1px solid;
+}
+
 .buy-btn
 {
-    background-color: green($color: #000000);
+    background: #dcbd4b;
     width: 200px;
-    height: 90px;
 }
