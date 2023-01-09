@@ -7,7 +7,11 @@ import { Product } from 'src/app/products/models/product';
 })
 export class CartService {
 
-  constructor() { }
+  private cart: Product[] 
+
+  constructor() {
+    this.cart = [];
+   }
 
   getProducts(): Product[] {
     const result: Product[] =
@@ -17,5 +21,14 @@ export class CartService {
       ];
 
     return result;
+  }
+
+  getCart(): Product[] {
+    return this.cart ?? [];
+  }
+
+  addToCart(product: Product): void 
+  {
+    this.cart.push(product);
   }
 }

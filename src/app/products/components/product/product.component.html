@@ -10,6 +10,6 @@
     <h3>isAvailable:</h3>
     <span>{{product.isAvailable}}</span>
     <br>
-    
-    <button class="buy-btn" (click)="onAddToCart()">Buy</button>
+
+    <button [disabled]="!product.isAvailable" class="buy-btn" (click)="buyBtnClick()">Buy</button>
 </div>
