@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/products/models/Product';
 import { ProductService } from 'src/app/products/services/product.service';
 import { CartService } from '../../services/cart.service';
@@ -8,13 +8,17 @@ import { CartService } from '../../services/cart.service';
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss']
 })
-export class CartListComponent {
-  
-  products: Product[]
+export class CartListComponent implements OnInit {
 
-  constructor(private productService: ProductService, 
+  products!: Product[]
+
+  constructor(
+    // private productService: ProductService,
     private cartService: CartService) {
-    this.products = cartService.getProducts();
+  }
+
+    ngOnInit(): void {
+      this.products = this.cartService.getProducts();
   }
 
   trackByItems(index: number, item: Product) : number
