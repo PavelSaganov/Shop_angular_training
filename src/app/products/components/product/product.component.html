@@ -11,5 +11,7 @@
     <span>{{product.isAvailable}}</span>
     <br>
 
-    <button [disabled]="!product.isAvailable" class="buy-btn" (click)="buyBtnClick()">Buy</button>
+    <div>
+        <button [disabled]="!product.isAvailable" class="buy-btn" (click)="buyBtnClick($event)">Buy</button>
+    </div>
 </div>

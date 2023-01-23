@@ -1,10 +1,12 @@
 <div>
     <h1>Your cart:</h1>
+    <h2>Total cost: {{ totalCost }}</h2>
+    <h2>Total count: {{ totalQuantity }}</h2>
     <div *ngIf="products.length > 0; else elseBlock">
         <div *ngFor="let product of products; trackBy: trackByItems">
-            <app-cart-element [product]="product"></app-cart-element>
+            <app-cart-element [product]="product" (onDeleteItem)="deleteFromCart(product)"></app-cart-element>
         </div>
-    </div>
+    </div>  
 
     <ng-template #elseBlock class="empty-cart-block">
         <h1>Cart is empty!</h1>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Category } from 'src/app/products/enums/category';
 import { Product } from 'src/app/products/models/product';
 
@@ -13,22 +14,31 @@ export class CartService {
     this.cart = [];
    }
 
-  getProducts(): Product[] {
-    const result: Product[] =
-      [
-        new Product('Product 1', 'Some description', 120, true, Category.Clothes),
-        new Product('Product 2', 'Some description', 140, true, Category.ElectricalGoods),
-      ];
+  totalCost(): number {
+    return this.cart.reduce((previous, cur) => previous + Number(cur.price), 0);
+  }
 
-    return result;
+  totalQuantity(): number {
+    return this.cart.length;
+  }
+
+  getProducts(): Product[] {
+    return this.cart;
   }
 
   getCart(): Product[] {
     return this.cart ?? [];
   }
 
-  addToCart(product: Product): void 
+  addToCart(product: Product): void
   {
+    console.log('added to cart');
     this.cart.push(product);
+  }
+
+  deleteFromCart(product: Product)
+  {
+    let indexOfDeleted = this.cart.indexOf(product);
+    this.cart.splice(indexOfDeleted, 1);
   }
 }
