@@ -10,5 +10,8 @@
     <h3>isAvailable:</h3>
     <span>{{product.isAvailable}}</span>
     <br>
-    <button class="buy-btn" (click)="onAddToCart()">Buy</button>
+
+    <div>
+        <button [disabled]="!product.isAvailable" class="buy-btn" (click)="buyBtnClick($event)">Buy</button>
+    </div>
 </div>

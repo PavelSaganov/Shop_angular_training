@@ -1,4 +1,4 @@
-<div class="cart-element">
+<div appHighlight>
     <h3>name:</h3>
     <span>{{product.name}}</span>
     <h3>description:</h3>
@@ -9,4 +9,6 @@
     <span>{{product.category}}</span>
     <h3>isAvailable:</h3>
     <span>{{product.isAvailable}}</span>
+    <br>
+    <button class="delete-btn" (click)="deleteBtnClick($event)">Remove from cart</button>
 </div>
