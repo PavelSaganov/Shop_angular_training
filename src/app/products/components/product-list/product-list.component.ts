@@ -12,15 +12,16 @@ import { CartService } from '../../../cart/services/cart.service';
 export class ProductListComponent implements AfterViewInit {
 
   @ViewChild("appTitle", { static: false })
-  titleName: ElementRef<HTMLHeadingElement>|undefined
-  private cartService: CartService
-  products: Product[]
+  titleName: ElementRef<HTMLHeadingElement>|undefined;
+  products!: Product[];
 
-  constructor(productService: ProductService,
-    cartService: CartService)
-  {
-    this.products = productService.getProducts();
-    this.cartService = cartService;
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService)
+  {}
+
+  ngOnInit(): void {
+    this.products = this.productService.getProducts();
   }
 
   ngAfterViewInit() : void

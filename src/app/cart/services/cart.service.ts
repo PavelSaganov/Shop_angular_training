@@ -8,11 +8,7 @@ import { Product } from 'src/app/products/models/product';
 })
 export class CartService {
 
-  private cart: Product[] 
-
-  constructor() {
-    this.cart = [];
-   }
+  private cart: Product[] = []
 
   totalCost(): number {
     return this.cart.reduce((previous, cur) => previous + Number(cur.price), 0);

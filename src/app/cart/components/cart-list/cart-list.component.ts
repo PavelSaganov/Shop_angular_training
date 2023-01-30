@@ -9,12 +9,13 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements AfterContentChecked {
-  
+
   products: Product[]
   totalCost: number = 0;
   totalQuantity: number = 0;
-  
+
   constructor(private cartService: CartService) {
+    // обычно эта операция выполняется в ngOnInit()
     this.products = cartService.getProducts();
   }
 
