@@ -7,6 +7,7 @@ import { CartModule } from './cart/cart.module'
 import { ProductsModule } from './products/products.module'
 import { OrdersModule } from './orders/orders.module'
 import { SharedModule } from './shared/shared.module'
+import { constants } from './core/services/constants.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { SharedModule } from './shared/shared.module'
     OrdersModule,
     SharedModule
   ],
-  providers: [],
+  providers: [{ provide: constants, useValue: constants }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

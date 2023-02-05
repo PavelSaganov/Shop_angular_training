@@ -30,6 +30,6 @@ export class CartListComponent implements AfterContentChecked {
 
   deleteFromCart(product: Product)
   {
-    this.cartService.deleteFromCart(product);
+    this.cartService.decreaseQuantity(product);
   }
 }
