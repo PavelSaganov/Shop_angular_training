@@ -30,12 +30,6 @@ export class CartService {
     return this.cart ?? [];
   }
 
-  addToCart(product: Product): void
-  {
-    console.log('added to cart');
-    this.cart.push(product);
-  }
-
   isEmptyCart(): boolean
   {
     if (this.cart.length > 0)
@@ -52,6 +46,7 @@ export class CartService {
   }
 
   decreaseQuantity(product: Product, count: number = 1): void {
+    console.log('descrease on ' + count);
     this.changeQuantity(product, -count);
   }
 
@@ -61,6 +56,7 @@ export class CartService {
   }
 
   private changeQuantity(product: Product, count: number): void {
+    console.log('chage on: ' + count);
     if (count > 0) {
       for (let i = 0; i < count; i++) {
         this.cart.push(product);
@@ -68,10 +64,12 @@ export class CartService {
     }
 
     if (count < 0) {
-      for (let i = 0; i < count; i++) {
+      for (let i = 0; i > count; i--) {
         let indexOfDeleted = this.cart.indexOf(product);
+        console.log(indexOfDeleted);
         if (indexOfDeleted != undefined) {
           this.cart = [...this.cart.slice(0, indexOfDeleted), ...this.cart.slice(indexOfDeleted + 1)];
+          console.log(this.cart);
         }
       }
     }

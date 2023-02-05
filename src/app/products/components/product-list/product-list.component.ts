@@ -34,6 +34,6 @@ export class ProductListComponent implements AfterViewInit {
   addProductToCart(product: any):void
   {
     console.log('adding to cart: ' + product.name);
-    this.cartService.addToCart(product);
+    this.cartService.increaseQuantity(product);
   }
 }
