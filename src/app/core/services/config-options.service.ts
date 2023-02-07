@@ -16,6 +16,10 @@ export class ConfigOptionsService {
 
   setConfigProperty(key: keyof ConfigModel, value: any): void
   {
+    // я думаю, что тут много лишнего.
+    // если есть метод установки, то он должен либо установить значение
+    // либо бросить исключение, а в вашем случае он может просто ничего не сделать
+    // и пользователь не будет понимать, почему
     let property = this.configModel[key];
     if (property != (undefined || null)
         && typeof value == typeof property)
