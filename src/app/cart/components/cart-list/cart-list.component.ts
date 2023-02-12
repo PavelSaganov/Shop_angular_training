@@ -15,6 +15,8 @@ export class CartListComponent implements AfterContentChecked {
   products$: Observable<Product[]>;
   totalCost: number = 0;
   totalQuantity: number = 0;
+  sortByIncreasing: boolean = false;
+  propertyToSort: string = "pice";
   
   constructor(private cartService: CartService) {
     this.products = cartService.getProducts();
