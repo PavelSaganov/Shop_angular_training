@@ -1,4 +1,5 @@
 import { AfterContentChecked, ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/products/models/product';
 import { CartService } from '../../services/cart.service';
 
@@ -10,12 +11,16 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartListComponent implements AfterContentChecked {
   
-  products: Product[]
+  products: Product[];
+  products$: Observable<Product[]>;
   totalCost: number = 0;
   totalQuantity: number = 0;
+  sortByIncreasing: boolean = false;
+  propertyToSort: string = "pice";
   
   constructor(private cartService: CartService) {
     this.products = cartService.getProducts();
+    this.products$ = cartService.cart$;
   }
 
   ngAfterContentChecked(): void {

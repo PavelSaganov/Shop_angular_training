@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Category } from 'src/app/products/enums/category';
 import { Product } from 'src/app/products/models/product';
 
@@ -9,6 +9,7 @@ import { Product } from 'src/app/products/models/product';
 export class CartService {
 
   private cart: Product[] 
+  public cart$: BehaviorSubject<Product[]> = new BehaviorSubject(this.getProducts());
 
   constructor() {
     this.cart = [];
@@ -73,5 +74,7 @@ export class CartService {
         }
       }
     }
+
+    this.cart$.next(this.cart);
   }
 }

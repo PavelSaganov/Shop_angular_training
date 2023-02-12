@@ -1,14 +1,26 @@
-<div>
-    <h1>Your cart:</h1>
-    <h2>Total cost: {{ totalCost }}</h2>
-    <h2>Total count: {{ totalQuantity }}</h2>
-    <div *ngIf="products.length > 0; else elseBlock">
-        <div *ngFor="let product of products; trackBy: trackByItems">
-            <app-cart-element [product]="product" (onDeleteItem)="deleteFromCart(product)"></app-cart-element>
-        </div>
-    </div>  
+    <div class="dropdown">
+        <span>Sort by increasing</span>
+        <input type="checkbox" [checked]="sortByIncreasing" (change)="sortByIncreasing = !sortByIncreasing" />
+    <h2>Sort by:</h2>
+    <select class="dropdown-content" [(ngModel)]="propertyToSort">
+        <option value="name">name</option>
+        <option value="description">description</option>
+        <option value="price">price</option>
+        <option value="category">category</option>
+    </select>
+    </div>
 
-    <ng-template #elseBlock class="empty-cart-block">
-        <h1>Cart is empty!</h1>
-    </ng-template>
-</div>
+    <div>
+        <h1>Your cart:</h1>
+        <h2>Total cost: {{ totalCost }}</h2>
+        <h2>Total count: {{ totalQuantity }}</h2>
+        <div *ngIf="products.length > 0; else elseBlock">
+            <div *ngFor="let product of (products$ | async | orderBy : propertyToSort : sortByIncreasing); trackBy: trackByItems;">
+                <app-cart-element [product]="product" (onDeleteItem)="deleteFromCart(product)"></app-cart-element>
+            </div>
+        </div>  
+        
+        <ng-template #elseBlock class="empty-cart-block">
+            <h1>Cart is empty!</h1>
+        </ng-template>
+    </div>
