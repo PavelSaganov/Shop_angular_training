@@ -2,6 +2,6 @@
     "explorer.compactFolders": false,
     "outline.collapseItems": "alwaysCollapse",
     "editor.formatOnPaste": true,
-    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorStyle": "line"
 }

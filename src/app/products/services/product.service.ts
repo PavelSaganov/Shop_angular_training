@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Category } from '../enums/category';
 import { Product } from '../models/product';
 
@@ -8,6 +9,8 @@ import { Product } from '../models/product';
 export class ProductService {
 
   constructor() { }
+
+  public productList$: BehaviorSubject<Product[]> = new BehaviorSubject(this.getProducts());
 
   getProducts(): Product[]
   {
@@ -20,10 +23,5 @@ export class ProductService {
     ];
 
     return result;
-  }
-
-  addProductToCart(): void
-  {
-
   }
 }
