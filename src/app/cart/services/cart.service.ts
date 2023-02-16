@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Category } from 'src/app/products/enums/category';
 import { Product } from 'src/app/products/models/product';
 
 @Injectable({
@@ -8,12 +7,8 @@ import { Product } from 'src/app/products/models/product';
 })
 export class CartService {
 
-  private cart: Product[] 
+  private cart: Product[] = []
   public cart$: BehaviorSubject<Product[]> = new BehaviorSubject(this.getProducts());
-
-  constructor() {
-    this.cart = [];
-   }
 
   totalCost(): number {
     return this.cart.reduce((previous, cur) => previous + Number(cur.price), 0);

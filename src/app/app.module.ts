@@ -8,6 +8,7 @@ import { ProductsModule } from './products/products.module'
 import { OrdersModule } from './orders/orders.module'
 import { SharedModule } from './shared/shared.module'
 import { constants } from './core/services/constants.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { constants } from './core/services/constants.service';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     CartModule,
     ProductsModule,

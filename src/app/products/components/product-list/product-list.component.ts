@@ -14,15 +14,13 @@ export class ProductListComponent implements AfterViewInit, OnInit {
 
   @ViewChild("appTitle", { static: false })
   titleName: ElementRef<HTMLHeadingElement>|undefined
-  private cartService: CartService
-  products: Product[]
+  products!: Product[]
   products$: Observable<Product[]>;
 
 
   constructor(private productService: ProductService,
-    cartService: CartService)
+    private cartService: CartService)
   {
-    this.products = productService.getProducts();
     this.products$ = this.productService.productList$;
     this.cartService = cartService;
   }

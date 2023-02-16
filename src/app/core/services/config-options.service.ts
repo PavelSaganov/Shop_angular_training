@@ -22,6 +22,10 @@ export class ConfigOptionsService {
     {
       property = value;
     }
+    else
+    {
+      throw Error("Can't find property");
+    }
   }
 
   getConfig(): ConfigModel {
