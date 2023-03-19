@@ -6,7 +6,7 @@ import { CartService } from 'src/app/cart/services/cart.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CartGuard implements CanActivate {
+export class IsCartEmptyGuard implements CanActivate {
 
   constructor(private cartService: CartService)
   {

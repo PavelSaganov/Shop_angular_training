@@ -8,11 +8,13 @@ import { Product } from '../../models//product';
 })
 export class ProductComponent {
 
-  @Input()  product!: Product;
+  @Input() product!: Product;
+  @Input() isAdmin!: boolean;
   @Output() onAddToCart = new EventEmitter<Product>() 
 
   buyBtnClick(event:any)
   {
+    console.log(this.isAdmin)
     this.onAddToCart.emit(this.product);
   }
 }

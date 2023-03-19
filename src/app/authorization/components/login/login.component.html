@@ -1,0 +1,15 @@
+<div class="registration-cssave">
+    <div>
+        <h3 class="text-center">Select a role</h3>
+        <div class="form-group">
+            <select class="item" [(ngModel)]="isAdmin">
+                <option selected value="false">User</option>
+                <option value="true">Admin</option>
+            </select>
+        </div>
+        <div class="form-group" (click)="login()">
+            <button class="create-account">Sign in account</button>
+            <p *ngIf="isAuthorized" style="color: green;">YOU SIGNED IN</p>
+        </div>
+    </div>
+</div>

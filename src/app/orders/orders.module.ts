@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProcessOrderComponent } from './components/process-order/process-order.component';
-import { CartGuard } from './guards/cart.guard';
+import { IsCartEmptyGuard } from './guards/is-cart-epmpty.guard';
 
 
 
@@ -13,7 +13,7 @@ import { CartGuard } from './guards/cart.guard';
     CommonModule
   ],
   providers: [
-    CartGuard
+    IsCartEmptyGuard
   ]
 })
 export class OrdersModule { }
