@@ -1,4 +1,4 @@
 <h1>Products:</h1>
-<div *ngFor="let product of products$ | async">
+<div class="product-card-list" *ngFor="let product of products$ | async">
     <app-product [product]="product" (onAddToCart)="addProductToCart(product)"></app-product>
 </div>
