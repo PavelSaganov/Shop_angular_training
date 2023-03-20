@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CartElementComponent } from './components/cart-element/cart-element.component';
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +16,6 @@ import { FormsModule } from '@angular/forms';
     SharedModule
   ],
   exports: [
-    CartElementComponent,
     CartListComponent
   ]
 })

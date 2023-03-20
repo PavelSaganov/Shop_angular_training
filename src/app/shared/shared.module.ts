@@ -4,6 +4,7 @@ import { HighlightDirective } from './directives/highlight/highlight.directive';
 import { FontSizeDirective } from './directives/font-size/font-size.directive';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { FormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     HighlightDirective,
     FontSizeDirective,
-    OrderByPipe
+    OrderByPipe,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule

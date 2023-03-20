@@ -3,6 +3,7 @@ import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../../cart/services/cart.service';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/authorization/services/auth.service';
 
 
 @Component({
@@ -14,20 +15,21 @@ export class ProductListComponent implements AfterViewInit, OnInit {
 
   @ViewChild("appTitle", { static: false })
   titleName: ElementRef<HTMLHeadingElement>|undefined
-  private cartService: CartService
-  products: Product[]
+  products!: Product[]
   products$: Observable<Product[]>;
+  isAdmin!: boolean;
 
 
   constructor(private productService: ProductService,
-    cartService: CartService)
+    private cartService: CartService,
+    private authService: AuthService)
   {
-    this.products = productService.getProducts();
     this.products$ = this.productService.productList$;
     this.cartService = cartService;
   }
 
   ngOnInit(): void {
+    this.isAdmin = this.authService.isCurrentUserAdmin();
     this.products$ = this.productService.productList$;
   }
 

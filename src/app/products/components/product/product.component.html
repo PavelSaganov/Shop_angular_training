@@ -13,5 +13,7 @@
 
     <div>
         <button [disabled]="!product.isAvailable" class="buy-btn" (click)="buyBtnClick($event)">Buy</button>
+        <a *ngIf="isAdmin" href="product/{{product.id}}" class="edit-btn">Details</a>
+        <a *ngIf="isAdmin" href="product/{{product.id}}" class="remove-btn">Remove</a>
     </div>
 </div>

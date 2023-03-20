@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Category } from 'src/app/products/enums/category';
 import { Product } from 'src/app/products/models/product';
 
 @Injectable({
@@ -8,32 +7,30 @@ import { Product } from 'src/app/products/models/product';
 })
 export class CartService {
 
-  private cart: Product[] 
+  private localStorageKey: string =  'cart-list';
   public cart$: BehaviorSubject<Product[]> = new BehaviorSubject(this.getProducts());
 
-  constructor() {
-    this.cart = [];
-   }
-
   totalCost(): number {
-    return this.cart.reduce((previous, cur) => previous + Number(cur.price), 0);
+    return this.getProducts().reduce((previous, cur) => previous + Number(cur.price), 0);
   }
 
   totalQuantity(): number {
-    return this.cart.length;
+    return this.getProducts().length;
   }
 
   getProducts(): Product[] {
-    return this.cart;
-  }
+    let jsonData = localStorage.getItem(this.localStorageKey);
+    if (jsonData != null)
+    {
+      return JSON.parse(jsonData) as any as Product[];
+    }
 
-  getCart(): Product[] {
-    return this.cart ?? [];
+    return [];
   }
 
   isEmptyCart(): boolean
   {
-    if (this.cart.length > 0)
+    if (this.getProducts().length > 0)
     {
       return false;
     }
@@ -53,28 +50,28 @@ export class CartService {
 
   removeAllProducts(): void
   {
-    this.cart = [];
+    localStorage.removeItem(this.localStorageKey);
   }
 
   private changeQuantity(product: Product, count: number): void {
     console.log('chage on: ' + count);
+    let currentCart = this.getProducts();
     if (count > 0) {
       for (let i = 0; i < count; i++) {
-        this.cart.push(product);
+        currentCart.push(product);
       }
     }
 
     if (count < 0) {
       for (let i = 0; i > count; i--) {
-        let indexOfDeleted = this.cart.indexOf(product);
-        console.log(indexOfDeleted);
-        if (indexOfDeleted != undefined) {
-          this.cart = [...this.cart.slice(0, indexOfDeleted), ...this.cart.slice(indexOfDeleted + 1)];
-          console.log(this.cart);
+        let indexOfDeleted = currentCart.findIndex(prod => prod.id == product.id);
+        if (indexOfDeleted >= 0) {
+          currentCart = [...currentCart.slice(0, indexOfDeleted), ...currentCart.slice(indexOfDeleted + 1)];
         }
       }
     }
 
-    this.cart$.next(this.cart);
+    localStorage.setItem(this.localStorageKey, JSON.stringify(currentCart));
+    this.cart$.next(this.getProducts());
   }
 }

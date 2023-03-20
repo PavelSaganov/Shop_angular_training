@@ -1,13 +1,10 @@
 import { Category } from "../enums/category";
 
-export class Product {
-    constructor(
-        public name: string | undefined,
-        public description: string | undefined,
-        public price: number | undefined,
-        public isAvailable: Boolean | undefined,
-        public category: Category | undefined
-    ) 
-    {
-    }
+export interface Product {
+        id: number | undefined,
+        name: string | undefined,
+        description: string | undefined,
+        price: number | undefined,
+        isAvailable: Boolean | undefined,
+        category: Category | undefined
 }
