@@ -15,17 +15,18 @@ export class ProductViewComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private productService: ProductService)
   {
-    
+
   }
 
   ngOnInit()
   {
     let id = Number(this.route.snapshot.paramMap.get('id'));
     let productById = this.productService.getProducts().find(p => p.id == id);
+    // if (productById)
     if (productById != undefined || productById != null)
     {
       this.product = productById;
     }
-    
+
   }
 }

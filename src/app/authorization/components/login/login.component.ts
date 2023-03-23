@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
 
-  isAdmin = 'false';
+  isAdmin = 'false'; // почему как строка?
   isAuthorized = this.isSigned();
 
   constructor(private authService:AuthService) { }

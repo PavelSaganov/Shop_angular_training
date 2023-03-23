@@ -69,6 +69,8 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [IsCartEmptyGuard, HaveAccessGuard, SureToLeaveGuard]
+  // Эти guards уже зарегистрированы в своем декораторе
+  // тут их регистрировать не нужно
+  // providers: [IsCartEmptyGuard, HaveAccessGuard, SureToLeaveGuard]
 })
 export class AppRoutingModule { }
